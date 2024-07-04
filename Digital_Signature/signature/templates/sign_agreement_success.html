@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Agreement Success</title>
+</head>
+<body>
+    <h1>Agreement Signed Successfully!</h1>
+    <br>
+    <a href="{% url 'view_signed_agreement' agreement.id borrower.id %}">View Signed Agreement</a>
+</body>
+</html>

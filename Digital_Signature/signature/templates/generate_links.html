@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Links</title>
+</head>
+<body>
+    <h1>Generated Links for Borrowers</h1>
+    <h2>Agreement ID: {{ agreement.id }}</h2>
+    <ul>
+        {% for borrower, link in borrower_links.items %}
+            <li>{{ borrower }}: <a href="{{ link }}">Link</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Process</title>
+</head>
+<body>
+    <h1>Loan Process</h1>
+
+    {% if step == 'number_of_borrowers' %}
+        <form method="post">
+            {% csrf_token %}
+            {{ number_form.as_p }}
+            <input type="hidden" name="step" value="number_of_borrowers">
+            <button type="submit">Next</button>
+        </form>
+    {% elif step == 'borrower_details' %}
+        <form method="post">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            {% for form in formset %}
+                {{ form.as_p }}
+            {% endfor %}
+            <input type="hidden" name="step" value="borrower_details">
+            <input type="hidden" name="num_borrowers" value="{{ num_borrowers }}">
+            <button type="submit">Next</button>
+        </form>
+    {% elif step == 'upload_agreement' %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ upload_form.as_p }}
+            <input type="hidden" name="step" value="upload_agreement">
+            <input type="hidden" name="agreement_id" value="{{ agreement_id }}">
+            <button type="submit">Upload</button>
+        </form>
+    {% elif step == 'generate_links' %}
+        <h2>Generated Links</h2>
+        <ul>
+            {% for name, link in borrower_links.items %}
+            <li>{{ name }}: <a href="{{ link }}">Link</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

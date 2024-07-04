@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Original Document</title>
+</head>
+<body>
+    <h1>Original Document</h1>
+    <embed src="{{ document_url }}" width="800px" height="600px" type="application/pdf" />
+    <form method="post">
+        {% csrf_token %}
+        <input type="checkbox" id="acknowledge_checkbox" name="acknowledge_checkbox">
+        <label for="acknowledge_checkbox">I acknowledge that I have read and understood the document.</label><br>
+        <button type="submit">Proceed to Sign</button>
+    </form>
+</body>
+</html>
